@@ -19,13 +19,16 @@ def hello():
 
 @app.route('/packages')
 def packages():
+    return_string = ''
     packages = ['pandas', 'matplotlib', 'numpy', 'pygame', 'flask', 'django', 'requests', 'scipy']
     for package in packages:
 	    try:
 		    var = importlib.import_module(package)
-		    print('Package ' + package + ' OK' + '</br>')
+		    return_string = return_string + 'Package ' + package + ' OK' + '</br>'
 	    except ModuleNotFoundError:
-		    print('Package ' + package + ' not found' + '</br>')
+		    return_string = return_string + 'Package ' + package + ' not found' + '</br>'
+
+    return return_string
 
 if __name__ == '__main__':
     import os
